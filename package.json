@@ -1,0 +1,31 @@
+{
+  "name": "nexa-table",
+  "version": "1.0.0",
+  "description": "Tabel component made by NexaRize",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rmdir /s dist",
+    "build": "tsc --jsx react-native",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "Francisco Gonzalez Veloz",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.55",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "http://localhost:3000"
+  },
+  "bugs": {
+    "url": "http://localhost:3000"
+  },
+  "homepage": "http://localhost:3000"
+}
