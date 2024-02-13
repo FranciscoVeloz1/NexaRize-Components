@@ -1,6 +1,6 @@
 {
   "name": "nexa-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React components made by NexaRize",
   "main": "dist/index.js",
   "scripts": {
