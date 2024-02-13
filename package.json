@@ -4,8 +4,8 @@
   "description": "React components made by NexaRize",
   "main": "dist/index.js",
   "scripts": {
-    "clean": "rmdir /s dist",
-    "build": "tsc --jsx react-native",
+    "clean": "rm -rf dist",
+    "build": "tsc --jsx react",
     "prepare": "npm run build"
   },
   "keywords": [],
