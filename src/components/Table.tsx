@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react'
 import { TableStyles, TableConfig } from "../interfaces/ITable";
 
 interface Props<T> {
   data: T[];
   config: TableConfig<T>;
-  className?: TableStyles;
+  styles?: TableStyles;
 }
 
-function Table<T>({ data, config, className }: Props<T>) {
+function Table<T>({ data, config, styles }: Props<T>) {
   return (
     <div>
-      <table className={className?.table}>
+      <table className={styles?.table}>
         <thead>
-          <tr className={className?.tr}>
+          <tr className={styles?.tr}>
             {Object.values(config).map((v) => (
-              <th className={className?.th} key={v.name}>
+              <th className={styles?.th} key={v.name}>
                 {v.name}
               </th>
             ))}
@@ -23,9 +23,9 @@ function Table<T>({ data, config, className }: Props<T>) {
 
         <tbody>
           {data.map((d, i) => (
-            <tr key={i} className={className?.tr}>
+            <tr key={i} className={styles?.tr}>
               {Object.entries(config).map(([key, value], j) => (
-                <td className={className?.td} key={j}>
+                <td className={styles?.td} key={j}>
                   {value.render(d, key)}
                 </td>
               ))}

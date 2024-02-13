@@ -1,7 +1,7 @@
 {
-  "name": "nexa-table",
+  "name": "nexa-components",
   "version": "1.0.0",
-  "description": "Tabel component made by NexaRize",
+  "description": "React components made by NexaRize",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rmdir /s dist",
