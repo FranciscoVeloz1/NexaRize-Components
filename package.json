@@ -22,10 +22,10 @@
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "http://localhost:3000"
+    "url": "https://github.com/FranciscoVeloz1/NexaRize-Components"
   },
   "bugs": {
-    "url": "http://localhost:3000"
+    "url": "https://github.com/FranciscoVeloz1/NexaRize-Components/issues"
   },
-  "homepage": "http://localhost:3000"
+  "homepage": "https://github.com/FranciscoVeloz1/NexaRize-Components"
 }
