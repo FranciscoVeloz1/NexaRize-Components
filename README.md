@@ -17,5 +17,5 @@ npm install nexa-components
 
 ## Docs
 You can find docs of each component in the next links:
--[Table component](https://github.com/FranciscoVeloz1/NexaRize-Components)
--[Pagination component](https://github.com/FranciscoVeloz1/NexaRize-Components)
+- [Table component](https://github.com/FranciscoVeloz1/NexaRize-Components)
+- [Pagination component](https://github.com/FranciscoVeloz1/NexaRize-Components)
