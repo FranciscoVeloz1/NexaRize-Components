@@ -9,7 +9,7 @@ Welcome to NexaRize components! This library provides a collection of utility fu
 - Functional Components: Embrace the functional paradigm with components focused solely on logical operations, fostering cleaner and more modular code.
 
 ## Installation
-You can install the React Logic Utilities Library via npm:
+You can install NexaRize components via npm:
 
 ```bash
 npm install nexa-components
