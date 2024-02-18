@@ -1,5 +1,5 @@
 # Table component
-Welcome to the React Table Component! This component provides a versatile and customizable solution for rendering tabular data in your React applications. With this component, you can easily display and manipulate data in a structured format, offering users a clear and organized view of information.
+Welcome to the NexaRize Table Component! This component provides a versatile and customizable solution for rendering tabular data in your React applications. With this component, you can easily display and manipulate data in a structured format, offering users a clear and organized view of information.
 
 ## Usage
 
