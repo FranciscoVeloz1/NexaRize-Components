@@ -29,7 +29,7 @@ Welcome to the NexaRize Table Component! This component provides a versatile and
 }
 ```
 
-2. Make custom table component with styles using the **Neza table component**:
+2. Make custom table component with styles using the **Nexa table component**:
 ```typescript
 // CustomTable.ts
 import { Table, TableConfig, TableStyles } from "nexa-components"; // Importing table component and interfaces
@@ -198,11 +198,11 @@ const Users = () => {
     },
     address_street: { // -> name of the object_key that we wanna render (IUser.address.street)
       name: "Street",
-      render: addressRender, // -> custom render for object address
+      render: addressRender, // -> custom render for address object
     },
     geo_lat: { // -> name of the object_key that we wanna render (IUser.address.geo.lat)
       name: "Latitud",
-      render: geoRender, // -> custom render for object address.geo
+      render: geoRender, // -> custom render for address.geo object
     },
     compamy_name: {
       name: "Company",
