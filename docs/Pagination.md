@@ -108,8 +108,8 @@ export interface Post {
 3. Moving on to fetching data from the API, here's our approach:
 ```typescript
 // post.service.ts
-import { Post } from "../interfaces/IPost";     //Importing POST interface
-import { IPagination } from "nexa-components";  //Importing pagination interface
+import { Post } from "../interfaces/IPost";     // Importing POST interface
+import { IPagination } from "nexa-components";  // Importing pagination interface
 
 export const list = async (page: string): Promise<IPagination<Post[]>> => {
   const response = await fetch(
