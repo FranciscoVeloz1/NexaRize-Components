@@ -2,6 +2,8 @@
 Welcome to the React Table Component! This component provides a versatile and customizable solution for rendering tabular data in your React applications. With this component, you can easily display and manipulate data in a structured format, offering users a clear and organized view of information.
 
 ## Usage
+
+1. Make custom css classes. (also you can use bootstrap, tailwind, or other library with utility classes):
 ```css
 /* App.css */
 .table {
@@ -27,8 +29,10 @@ Welcome to the React Table Component! This component provides a versatile and cu
 }
 ```
 
+2. Make custom table component with styles using the **Neza table component**:
 ```typescript
-import { Table, TableConfig, TableStyles } from "nexa-components";
+// CustomTable.ts
+import { Table, TableConfig, TableStyles } from "nexa-components"; // Importing table component and interfaces
 
 interface Props<T> {
   data: T[];
@@ -36,6 +40,7 @@ interface Props<T> {
 }
 
 function CustomTable<T>({ data, config }: Props<T>) {
+  // Customs styles for table component based on App.css
   const tableStyles: TableStyles = {
     table: "table",
     tr: "table-tr",
@@ -49,7 +54,9 @@ function CustomTable<T>({ data, config }: Props<T>) {
 export default CustomTable;
 ```
 
+3. For this example we are going to use the JSON placeholder [User API](https://jsonplaceholder.typicode.com/users) for show how to render objects within other objects. This is the interface:
 ```typescript
+// IUser.ts
 export interface IUser {
   id: number;
   name: string;
@@ -59,7 +66,7 @@ export interface IUser {
   phone: string;
   website: string;
   company: Company;
-  [key: string]: string | number | Address | Company;
+  [key: string]: string | number | Address | Company; // -> Required for all interfaces for the table component
 }
 
 export interface Address {
@@ -85,7 +92,10 @@ export interface Company {
 }
 ```
 
+4. Service for fetch data from the API:
+
 ```typescript
+// user.service.ts
 import { IUser } from "../interfaces/IUser";
 
 export const list = async (): Promise<IUser[]> => {
@@ -94,6 +104,8 @@ export const list = async (): Promise<IUser[]> => {
   return data;
 };
 ```
+
+5. In the render of the table we are going to add buttons for made actions within the table, and this ones are the styles for that buttons:
 
 ```css
 /* extras */
@@ -120,16 +132,18 @@ export const list = async (): Promise<IUser[]> => {
 }
 ```
 
+6. Now with all this elements, we can use our new Custom table component:
 ```typescript
-import CustomTable from "../CustomTable";
+import CustomTable from "../CustomTable"; // Importing table component
 import { useEffect, useState } from "react";
 import { IUser } from "../../interfaces/IUser";
 import { list } from "../../services/user.services";
-import { TableConfig } from "nexa-components";
+import { TableConfig } from "nexa-components"; // Importing interface
 
 const Users = () => {
   const [data, setData] = useState<IUser[]>([]);
 
+  // Gettting users data and saving it on data use state
   const getUsers = async () => {
     try {
       const users = await list();
@@ -139,25 +153,30 @@ const Users = () => {
     }
   };
 
+  // default render of the table rows
   const defaultRender = (item: IUser, field: string) => (
     <div>{`${item[field]}`}</div>
   );
 
+  // custom render for the address object
   const addressRender = (item: IUser, field: string) => {
     const f = field.split("_")[1];
     return <div>{`${item.address[f]}`}</div>;
   };
 
+  // custom render for the geo object
   const geoRender = (item: IUser, field: string) => {
     const f = field.split("_")[1];
     return <div>{`${item.address.geo[f]}`}</div>;
   };
 
+  // custom render for the company object
   const companyRender = (item: IUser, field: string) => {
     const f = field.split("_")[1];
     return <div>{`${item.company[f]}`}</div>;
   };
 
+  // custom render for the actions of the table
   const actionsRender = (item: IUser) => {
     return (
       <div className="btn-container">
@@ -167,30 +186,31 @@ const Users = () => {
     );
   };
 
+  // Table config
   const tableConfig: TableConfig<IUser> = {
-    name: {
-      name: "Name",
-      render: defaultRender,
+    name: { // -> name of the key that we wanna render (IUser.name)
+      name: "Name", // -> Name of the column (displayed on the thead)
+      render: defaultRender, // -> render
     },
-    username: {
+    username: { // -> IUser.username
       name: "Username",
       render: defaultRender,
     },
-    address_street: {
+    address_street: { // -> name of the object_key that we wanna render (IUser.address.street)
       name: "Street",
-      render: addressRender,
+      render: addressRender, // -> custom render for object address
     },
-    geo_lat: {
+    geo_lat: { // -> name of the object_key that we wanna render (IUser.address.geo.lat)
       name: "Latitud",
-      render: geoRender,
+      render: geoRender, // -> custom render for object address.geo
     },
     compamy_name: {
       name: "Company",
       render: companyRender,
     },
-    action: {
+    action: { // -> name for extra key that is not inside the original object
       name: "Actions",
-      render: actionsRender,
+      render: actionsRender, // -> custom render for actions
     },
   };
 
@@ -198,6 +218,7 @@ const Users = () => {
     getUsers();
   }, []);
 
+  // returning custom table
   return <CustomTable data={data} config={tableConfig} />;
 };
 
