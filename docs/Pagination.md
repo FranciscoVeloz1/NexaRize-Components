@@ -2,12 +2,12 @@
 Welcome to the NexaRize Pagination Component! This component provides a flexible and customizable solution for implementing pagination in your React applications. With this component, you can easily navigate through large datasets or paginated content with intuitive controls and a seamless user experience.
 
 ## Usage
-For show the usage of the component, we are going to show you how to use it in a real project with react and typescript.
+To demonstrate the usage of the component, we'll illustrate its integration into a real project using React and TypeScript.
 
-1. For add styles at the pagination component, first, we are going to make our design and then we are going to make a custom component with all the styles and classes that you want to add (css, tailwind, etc...).
+1. To style the pagination component, we'll start by designing our desired appearance. Following that, we'll create a custom component incorporating all the styles and classes you wish to apply, whether using CSS, Tailwind CSS, or other styling approaches.
 
 ```css
-/*App.css*/
+/* App.css */
 .pagination {
   display: flex;
   justify-content: center;
@@ -58,7 +58,7 @@ For show the usage of the component, we are going to show you how to use it in a
 
 ```typescript
 // CustomPagination.tsx
-import { Pagination, PaginationStyles } from "nexa-components"; //Importing component and style interface
+import { Pagination, PaginationStyles } from "nexa-components"; // Importing component and style interface
 
 interface Props {
   total: number;
@@ -92,7 +92,7 @@ const CustomPagination = ({ total, txtPage, setTxtPage, label }: Props) => {
 export default CustomPagination;
 ```
 
-2. Now we are gonna show you the data that we are going to use. In this case from the JSON placeholder API, we are going to use the [Post API](https://jsonplaceholder.typicode.com/posts). This includes the next interface:
+2. Next, let's review the data we'll utilize. We'll be retrieving data from the JSON Placeholder API, specifically from the [Post API](https://jsonplaceholder.typicode.com/posts). Here's the interface for the data:
 
 ```typescript
 // IPost.ts
@@ -105,7 +105,7 @@ export interface Post {
 }
 ```
 
-3. Then, we are going to show you how we are fetching the data from the API:
+3. Moving on to fetching data from the API, here's our approach:
 ```typescript
 // post.service.ts
 import { Post } from "../interfaces/IPost";     //Importing POST interface
@@ -126,20 +126,21 @@ export const list = async (page: string): Promise<IPagination<Post[]>> => {
 };
 ```
 
-4. With all this pieces, now we can call the pagination component. In this case we are going to combine the Table Component with the Pagination component for show you how works:
+4. With all the necessary components in place, we can now incorporate the pagination component. In this scenario, we'll combine the Table Component with the Pagination component to demonstrate how they work together:
 
 ```typescript
 import CustomTable from "../CustomTable";
-import CustomPagination from "../CustomPagination";             //Importing custom pagination component
+import CustomPagination from "../CustomPagination"; // Importing custom pagination component
 import { useEffect, useState } from "react";
 import { Post } from "../../interfaces/IPost";
 import { list } from "../../services/post.services";
-import { TableConfig, IPagination } from "nexa-components";     //Importing interfaces
+import { TableConfig, IPagination } from "nexa-components"; // Importing interfaces
 
 const Posts = () => {
   const [data, setData] = useState<IPagination<Post[]>>({ data: [], total: 0 });
   const [page, setPage] = useState<string>("1");
 
+  // Getting data from API
   const getPosts = async () => {
     try {
       const posts = await list(page);
@@ -149,6 +150,7 @@ const Posts = () => {
     }
   };
 
+  // Table config
   const defaultRender = (item: Post, field: string) => (
     <div>{`${item[field]}`}</div>
   );
@@ -177,7 +179,7 @@ const Posts = () => {
     <div>
       <CustomTable data={data.data} config={tableConfig} />
 
-      /*Custo component with all required props*/
+      /* Custom pagination component with all required props */
       <CustomPagination
         total={data.total}
         label={"de"}
